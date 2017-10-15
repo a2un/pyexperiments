@@ -16,7 +16,6 @@ class Blockchain(object):
 
 
 def main():
-    
     block = {
         "index":1,
         "timestamp":3423423423423.234
