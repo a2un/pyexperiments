@@ -11,4 +11,5 @@ class Blockchain(object):
     def hash(block):
         pass
     @property
-    
+    def last_block(self):
+        pass
