@@ -7,6 +7,7 @@ class Blockchain(object):
         self.chain = []
         self.current_transactions = []
     def new_block(self,proof,previous_hash=None):
+        
         block={
             "index": len(self.chain) + 1,
             "timestamp":time(),
