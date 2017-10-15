@@ -19,7 +19,7 @@ def allAncestors(root,node):
         node = node.parent
     return ancestorsList
     
-def findLeastCommonParent(root,node1Ancestors,node2Ancestors):
+def findLeastCommonParentineff(root,node1Ancestors,node2Ancestors):
     if type(node1Ancestors) is list and type(node2Ancestors) is list:
         for node1ancestoritem in node1Ancestors:
             for node2ancestoritem in node2Ancestors:
@@ -28,6 +28,11 @@ def findLeastCommonParent(root,node1Ancestors,node2Ancestors):
     else:
         return root
 
+def findLeastCommonParent(root,node1,node2):
+    node1dist = root.key-node1.key
+    node2dist = root.key-node2.key
+    nodesdist = node1dist-node2dist
+    
 def findin(tree):
     if tree is not None:
         preorderlist=list()
@@ -40,7 +45,7 @@ def findin(tree):
             print 'all is well'
             node1Ancestors = allAncestors(tree.root,node1)
             node2Ancestors = allAncestors(tree.root,node2)
-            leastCommonParent = findLeastCommonParent(tree.root,node1Ancestors,node2Ancestors)
+            leastCommonParent = findLeastCommonParent(tree.root,node1,node2)
             
             print 'least common parent ' + str(leastCommonParent.key)
         else:
