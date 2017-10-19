@@ -45,6 +45,7 @@ def allAncestors(root,node):
         node = node.parent
     return ancestorsList
     
+    
 def findLeastCommonParentineff(root,node1Ancestors,node2Ancestors):
     if type(node1Ancestors) is list and type(node2Ancestors) is list:
         for node1ancestoritem in node1Ancestors:
