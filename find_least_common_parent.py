@@ -1,5 +1,6 @@
 from python_bst import *
 import os,sys,random
+import numpy as np
 
 def preorderTravese(preorderlist,node):
     if node is None:
@@ -8,6 +9,31 @@ def preorderTravese(preorderlist,node):
     preorderTravese(preorderlist,node.left)
     preorderTravese(preorderlist,node.right)
     
+def createMatrix(root):
+    height = getHeight(0,root);
+    _grid_shape = (height,height)
+    adjmatrix = np.zeros(_grid_shape);
+    print 'height' + str(height)
+    return adjmatrix
+
+def createList(adjList,node):
+    if node.left is not None:
+        adjList.append((node.key,node.left.key))
+        adjList.append(createList(adjList,node.left))
+    if node.right is not None:
+        adjList.append((node.key,node.right.key))
+        adjList.append(createList(adjList,node.right))
+    return adjList
+
+def getHeight(height,node):
+    height1=0;
+    height2=0;
+    if node.left is not None:
+        height1 = getHeight(height,node.left)
+    if node.right is not None:
+        height2 = getHeight(height,node.right)
+    height += height1+1 if (height1>=height2) else height2+1;
+    return height;
 
 def nodevalue(preorderlist,node):
         preorderlist.append(node.key)
@@ -29,9 +55,10 @@ def findLeastCommonParentineff(root,node1Ancestors,node2Ancestors):
         return root
 
 def findLeastCommonParent(root,node1,node2):
-    node1dist = root.key-node1.key
-    node2dist = root.key-node2.key
-    nodesdist = node1dist-node2dist
+    #adjmatrix = createMatrix(root)
+    adjList = list()
+    adjList = createList(adjList,root)
+    print adjList
     
 def findin(tree):
     if tree is not None:
@@ -45,9 +72,9 @@ def findin(tree):
             print 'all is well'
             node1Ancestors = allAncestors(tree.root,node1)
             node2Ancestors = allAncestors(tree.root,node2)
-            leastCommonParent = findLeastCommonParent(tree.root,node1,node2)
-            
-            print 'least common parent ' + str(leastCommonParent.key)
+            leastCommonParentineff = findLeastCommonParentineff(tree.root,node1Ancestors,node2Ancestors)
+            findLeastCommonParent(tree.root,node1,node2)
+            print 'least common parent ' + str(leastCommonParentineff.key)
         else:
            print 'invalid nodekey1 or nodekey2 value'
     else:
