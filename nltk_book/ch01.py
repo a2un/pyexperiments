@@ -1,5 +1,6 @@
 from nltk.book import *
 from nltk.collocations import *
+from nltk import bigrams,collocations
 
 #can any of the below lines with text1, text2,text3 and text 4
 print text1
