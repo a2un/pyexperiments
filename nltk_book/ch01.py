@@ -1,5 +1,5 @@
 from nltk.book import *
-
+from nltk.collocations import *
 
 #can any of the below lines with text1, text2,text3 and text 4
 print text1
@@ -7,19 +7,19 @@ keywords_set1 = ["analyst","company","graphs","charts","bars","reports","video",
 keywords_set2 = ["people","ships","drinks","party"]
 keywords_set3 = ["growth","massive","improvement","great"]
 
-print text1.concordance(keywords[0])
+print text1.concordance(keywords_set1[0])
 
-print text1.similar(keywords[0])
+print text1.similar(keywords_set3[0])
 
-print text1.common_contexts(keywords_set1[0:len(keywords)-1])
+print text1.common_contexts(keywords_set1[0:len(keywords_set1)-1])
 
-print text1.dispersion_plot(keywords_set2[0:len(keywords)-1])
+print text1.dispersion_plot(keywords_set2[0:len(keywords_set2)-1])
 
-print text1.generate()
+#print text1.generate()
 
 print len(text1) #vocabulary
 
-print len(sortet(set(text1)))
+print len(sorted(set(text1)))
 
 def lexical_diversity():
     print len(sortet(set(text1)))/len(text1)  #lexical richness
@@ -51,7 +51,7 @@ print fdistext1.most_common(50)
 
 print fdistext1['whale']
 
-fdistext1.plot(50,cumulative=true)
+fdistext1.plot(50,cumulative="true")
 
 V = set(text1)
 
